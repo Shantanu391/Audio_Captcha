@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="newcss.css">
+</head>
+<body>
+<div class="limiter">
+<div class="container">
+
+<h2>CAPTCHA</h2>
+
+
+<script>
+
+</script>
+
+<input type="button" value="PLAY" onclick="play()">
+
+<audio id="myAudio1" src="iox.wav"></audio>
+<audio id="myAudio2" src="nums.wav"></audio>
+<audio id="myAudio3" src="iox_with_music_noise.wav"></audio>
+<audio id="myAudio4" src="nums_with_music_noise.wav"></audio>
+
+<br>
+<br>
+<input id="numb">
+
+<button type="button" onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
+
+<script>
+
+var a = document.getElementById("myAudio1");
+var b = document.getElementById("myAudio2");
+var c = document.getElementById("myAudio3");
+var d = document.getElementById("myAudio4");
+var dict = {
+  a : "iox",
+  b : "0125",
+  c : "iox",
+  d : "0125"
+};
+
+let list=[a,b,c,d];
+let list2=[a,b,c,d];
+
+shuffle(list);
+
+function shuffle(array)
+{
+  array.sort(()=>Math.random()-0.5);
+}
+
+var song = list[0];
+
+var i;
+for(i = 0; i < 4; i++ ){
+  if (song == list2[i])
+  {
+    var idx = i;
+    break;
+  }
+}
+
+
+
+function play() {
+  //var audio = document.getElementById("audio");
+  song.play();
+}
+
+function myFunction() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb").value;
+  //var idx = 0; // key2
+
+  var key = Object.keys(dict)[idx];
+
+
+  if (x == dict[key]) {
+    alert("Successful login");
+    window.location.href="login.php";
+  } else {
+    text = "Input not valid";
+    alert("Login failed");
+    window.location.href="login.php";
+  }
+
+  //document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+
+</div>
+</div>
+</body>
+</html>
